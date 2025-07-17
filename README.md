@@ -20,7 +20,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ![img1](/imgs/Alterem-2025-07-17_15-51-19.jpg)
 
-![img2](/imgs/Alterem-2025-07-17_15-51-29.jpg)
+![img2](/imgs/Alterem-2025-07-17_16-16-34.jpg)
 
 ![img3](/imgs/Alterem-2025-07-17_15-51-32.jpg)
 

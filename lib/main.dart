@@ -16,10 +16,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isDarkMode = false;
+  bool _showColorName = true;
 
   void toggleTheme() {
     setState(() {
       _isDarkMode = !_isDarkMode;
+    });
+  }
+
+  void toggleColorNameDisplay() {
+    setState(() {
+      _showColorName = !_showColorName;
     });
   }
 
@@ -37,6 +44,8 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => HomePage(
               isDarkMode: _isDarkMode,
               toggleTheme: toggleTheme,
+              showColorName: _showColorName,
+              toggleColorNameDisplay: toggleColorNameDisplay,
             ),
       },
     );

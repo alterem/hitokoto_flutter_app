@@ -7,11 +7,15 @@ import 'tabs/profile_tab.dart';
 class HomePage extends StatefulWidget {
   final bool isDarkMode;
   final VoidCallback toggleTheme;
+  final bool showColorName;
+  final VoidCallback toggleColorNameDisplay;
 
   const HomePage({
     super.key,
     required this.isDarkMode,
-    required this.toggleTheme
+    required this.toggleTheme,
+    required this.showColorName,
+    required this.toggleColorNameDisplay
   });
 
   @override
@@ -19,20 +23,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final List<Widget> _tabContents;
-
   @override
   void initState() {
     super.initState();
-    _tabContents = [
-      const HomeTab(),
-      const ContactsTab(),
-      const ToolsTab(),
-      ProfileTab(
-        toggleTheme: widget.toggleTheme,
-        isDarkMode: widget.isDarkMode,
-      ),
-    ];
   }
 
   @override
@@ -61,7 +54,19 @@ class _HomePageState extends State<HomePage> {
       tabBuilder: (BuildContext context, int index) {
         return CupertinoTabView(
           builder: (context) {
-            return _tabContents[index];
+            // 在build方法中创建tab内容，这样当状态变化时，tab会重新构建
+            final List<Widget> tabContents = [
+              HomeTab(showColorName: widget.showColorName),
+              const ContactsTab(),
+              const ToolsTab(),
+              ProfileTab(
+                toggleTheme: widget.toggleTheme,
+                isDarkMode: widget.isDarkMode,
+                showColorName: widget.showColorName,
+                toggleColorNameDisplay: widget.toggleColorNameDisplay,
+              ),
+            ];
+            return tabContents[index];
           },
         );
       },

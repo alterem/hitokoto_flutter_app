@@ -3,11 +3,15 @@ import 'package:flutter/cupertino.dart';
 class ProfileTab extends StatelessWidget {
   final VoidCallback toggleTheme;
   final bool isDarkMode;
+  final bool showColorName;
+  final VoidCallback toggleColorNameDisplay;
 
   const ProfileTab({
     super.key,
     required this.toggleTheme,
     required this.isDarkMode,
+    required this.showColorName,
+    required this.toggleColorNameDisplay,
   });
 
   @override
@@ -152,6 +156,18 @@ class ProfileTab extends StatelessWidget {
               trailing: CupertinoSwitch(
                 value: isDarkMode,
                 onChanged: (_) => toggleTheme(),
+              ),
+            ),
+            Container(
+              height: 0.5,
+              color: CupertinoColors.systemGrey4,
+            ),
+            CupertinoListTile(
+              leading: const Icon(CupertinoIcons.color_filter),
+              title: const Text('显示颜色名称'),
+              trailing: CupertinoSwitch(
+                value: showColorName,
+                onChanged: (_) => toggleColorNameDisplay(),
               ),
             ),
             Container(
